@@ -2,8 +2,51 @@
 <html>
     <head>
         <title>Freelance Contract Generator</title>
+        <link rel="stylesheet" href="contracts.css" type="text/css">
     </head>
     <body>
         <h1>Freelance Contract Generator</h1>
+        <div id="contractInput">
+            <h3>Freelancer's Information</h3>
+            <input type="text" id="freelancerName" placeholder="Enter the freelancer's name"><br>
+            <input type="text" id="freelancerAddress" placeholder="Enter the freelancer's street address"><br>
+            <input type="text" id="freelancerCityStateZip" placeholder="Enter the freelancer's city, state, and zipcode"><br>
+            <input type="email" id="freelancerEmail" placeholder="Enter the freelancer's email address"><br>
+            <input type="text" id="freelancerPhone" placeholder="Enter the freelancer's phone number"><br>
+            <h3>Client's Information</h3>
+            <input type="text" id="clientName" placeholder="Enter the client's name"><br>
+            <input type="text" id="clientAddress" placeholder="Enter the client's street address"><br>
+            <input type="text" id="clientCityStateZip" placeholder="Enter the client's city, state, and zipcode"><br>
+            <input type="email" id="clientEmail" placeholder="Enter the client's email address"><br>
+            <input type="text" id="clientPhone" placeholder="Enter the clients's phone number"><br>
+            <h3>Project Information</h3>
+            <input type="text" id="projectDescription" placeholder="Enter a brief description of the project"><br>
+            <input type="text" id="service1" placeholder="Enter a service for the project">
+            <input type="text" id="service2" placeholder="Enter a service for the project">
+            <input type="text" id="service3" placeholder="Enter a service for the project">
+            <input type="text" id="service4" placeholder="Enter a service for the project">
+            <input type="text" id="service5" placeholder="Enter a service for the project"><br>
+            <input type="text" id="projectCost" placeholder="Enter full project cost (if charging a flat rate)">
+            <input type="text" id="projectHourly" placeholder="Enter hourly rate if applicable"><br>
+            <input type="text" id="deliverable1" placeholder="Enter a deliverable for the project">
+            <input type="text" id="deliverable2" placeholder="Enter a deliverable for the project">
+            <input type="text" id="deliverable3" placeholder="Enter a deliverable for the project">
+            <input type="text" id="deliverable4" placeholder="Enter a deliverable for the project">
+            <input type="text" id="deliverable5" placeholder="Enter a service for the project"><br>
+            <input type="text" id="projectStart" placeholder="When will the project start? (Date/Condition)">
+            <input type="text" id="projectEnd" placeholder="When will the project end? (Date/Condition)">
+            <h3>Custom Sections</h3>
+            <input type="text" id="customSection1" placeholder="Enter a title for your custom section"><br>
+            <textarea id="customText1" placeholder="Enter text for custom section"></textarea><br>
+            <input type="text" id="customSection2" placeholder="Enter a title for your custom section"><br>
+            <textarea id="customText2" placeholder="Enter text for custom section"></textarea><br>
+            <input type="text" id="customSection3" placeholder="Enter a title for your custom section"><br>
+            <textarea id="customText3" placeholder="Enter text for custom section"></textarea><br>
+            <input type="text" id="customSection4" placeholder="Enter a title for your custom section"><br>
+            <textarea id="customText4" placeholder="Enter text for custom section"></textarea><br>
+            <input type="text" id="customSection5" placeholder="Enter a title for your custom section"><br>
+            <textarea id="customText5" placeholder="Enter text for custom section"></textarea><br>
+            <button type="submit" id="generateContract">generate my contract</button>
+        </div>
     </body>
 </html>

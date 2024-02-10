@@ -1,0 +1,53 @@
+:root {
+    --neon: #2272FF;
+    --dark: #1D1D1D;
+    --light: #F8F8FF;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--light);
+    font-family: Optima, sans-serif;
+}
+
+h1 {
+    color: var(--neon);
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+h3 {
+    color: var(--dark);
+    margin-bottom: 50px;
+}
+
+input, textarea {
+    width: 60em;
+    margin-bottom: 8px;
+    height: 4em;
+    background-color: var(--dark);
+    color: var(--light);
+    border: 2px solid var(--neon);
+    border-radius: 4px;
+}
+
+input::placeholder, textarea::placeholder {
+    font-size: 155%;
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+textarea {
+    height: 15em;
+}
+
+#contractInput {
+    margin-left: 50px;
+}
+
+button {
+    background-color: var(--neon);
+    height: 3em;
+    font-size: 125%;
+    color: var(--light);
+}
