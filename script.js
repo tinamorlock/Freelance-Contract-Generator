@@ -71,7 +71,57 @@ const export2Word = (element, filename = '') => {
 }
 
 const makeContract = () => {
-    // enter code for displaying contract on page
+    // grabbing values entered by the end user
+    const inputs = {};
+    inputArr.forEach(id => {
+        inputs[id] = document.getElementById(id).value;
+    });
+
+    // services HTML to account for multiple services entered
+    // only adds them if entered
+    let servicesHTML = "";
+    if (inputs.service1) {
+        servicesHTML += `<li>${service1}</li>`;
+    }
+    if (inputs.service2) {
+        servicesHTML += `<li>${service2}</li>`;
+    }
+    if (inputs.service3) {
+        servicesHTML += `<li>${service3}</li>`;
+    }
+    if (inputs.service4) {
+        servicesHTML += `<li>${service4}</li>`;
+    }
+    if (inputs.service5) {
+        servicesHTML += `<li>${service5}</li>`;
+    }
+
+    // building the full contract
+    const contractHTML = `
+        <h1>Freelance Services Agreement</h1>
+        <p>This agreement is between ${freelancerName}
+        and ${clientName}</p>
+        <h2>Contact Information</h2>
+        <h3>Freelancer</h3>
+        <p>Name: ${freelancerName}</p>
+        <p>Address:</p>
+        <p>${freelancerAddress}</p>
+        <p>${freelancerCityStateZip}</p>
+        <p>Phone Number: ${freelancerPhone}</p>
+        <p>Email: <a href="mailto:${freelancerEmail}">${freelancerEmail}</a></p>
+        <h3>Client</h3>
+        <p>Name: ${clientName}</p>
+        <p>Address:</p>
+        <p>${clientAddress}</p>
+        <p>${clientCityStateZip}</p>
+        <p>Phone Number: ${clientPhone}</p>
+        <p>Email: <a href="mailto:${clientEmail}">${clientEmail}</a></p>
+        <h2>Project Information</h2>
+        <h3>Services</h3>
+        <ul>
+            ${servicesHTML}
+        </ul>
+    `;
 }
 
 // event listeners
