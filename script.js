@@ -96,6 +96,25 @@ const makeContract = () => {
         servicesHTML += `<li>${service5}</li>`;
     }
 
+    // deliverables HTML to account for multiple deliverables
+    // only adds them if entered
+    let deliverHTML = "";
+    if (inputs.deliverable1) {
+        deliverHTML += `<li>${deliverable1}</li>`;
+    }
+    if (inputs.deliverable2) {
+        deliverHTML += `<li>${deliverable2}</li>`;
+    }
+    if (inputs.deliverable3) {
+        deliverHTML += `<li>${deliverable3}</li>`;
+    }
+    if (inputs.deliverable4) {
+        deliverHTML += `<li>${deliverable4}</li>`;
+    }
+    if (inputs.deliverable5) {
+        deliverHTML += `<li>${deliverable5}</li>`;
+    }
+
     // building the full contract
     const contractHTML = `
         <h1>Freelance Services Agreement</h1>
@@ -117,9 +136,19 @@ const makeContract = () => {
         <p>Phone Number: ${clientPhone}</p>
         <p>Email: <a href="mailto:${clientEmail}">${clientEmail}</a></p>
         <h2>Project Information</h2>
+        <p><i>
+            ${projectDescription}
+        </i></p>
         <h3>Services</h3>
         <ul>
             ${servicesHTML}
+        </ul>
+        <h3>Pricing</h3>
+        <p>Estimated project fee: $${projectCost}</p>
+        <p>Additional work billed at $${projectHourly} per hour.</p>
+        <h2>Deliverables</h2>
+        <ul>
+            ${deliverHTML}
         </ul>
     `;
 }
