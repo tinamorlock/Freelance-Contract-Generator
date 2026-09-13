@@ -7,17 +7,24 @@
 body {
     background-color: var(--light);
     color: var(--light);
-    font-family: Optima, sans-serif;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 h1 {
-    color: var(--neon);
+    color: #660708;
+    font-weight: 200;
     text-align: center;
     margin-bottom: 100px;
 }
 
+h2 {
+    color: #a4161a;
+    font-weight: 150;
+}
+
 h3 {
-    color: var(--dark);
+    color: #ba181b;
+    font-weight: 150;
     margin-bottom: 50px;
 }
 
@@ -46,8 +53,31 @@ textarea {
 }
 
 button {
-    background-color: var(--neon);
+    background-color: #e5383b;
     height: 3em;
     font-size: 125%;
-    color: var(--light);
+    color: #f5f3f4;
+}
+
+#contractDocument {
+    color: #0b090a;
+}
+
+#contractDocument h1 {
+    color: #660708;
+    font-weight: 200;
+}
+
+#contractDocument h2 {
+    color: #a4161a;
+    font-weight: 150;
+}
+
+#contractDocument h3 {
+    color: #ba181b;
+    font-weight: 100;
+}
+
+#exportPDF {
+    display: none;
 }

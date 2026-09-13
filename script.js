@@ -35,39 +35,15 @@ const inputArr = [
     'customSection5',
     'customText5',
 ];
-const genContract = document.querySelector('#generateContract');
+const genContract = document.querySelector("#generateContract");
 
-const export2Word = (element, filename = '') => {
-    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
-    var postHtml = "</body></html>";
-    var html = preHtml + document.getElementById(element).innerHTML + postHtml;
+const button = document.getElementById("exportPDF");
 
-    var blob = new Blob(['\ufeff', html], {
-        type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-    });
-
-    // Create download link element
-    var downloadLink = document.createElement("a");
-
-    document.body.appendChild(downloadLink);
-
-    if (navigator.msSaveOrOpenBlob) {
-        navigator.msSaveOrOpenBlob(blob, filename);
-    } else {
-        // Use the blob directly as the href
-        downloadLink.href = URL.createObjectURL(blob);
-
-        // Setting the file name
-        downloadLink.download = filename ? filename + '.docx' : 'document.docx';
-
-        // Triggering the download
-        downloadLink.click();
-
-        // Clean up
-        URL.revokeObjectURL(downloadLink.href);
-    }
-
-    document.body.removeChild(downloadLink);
+function generatePDF() {
+    // Choose the element that your content will be rendered to.
+    const element = document.getElementById("contractDocument");
+    // Choose the element and save the PDF for your user.
+    html2pdf().from(element).save();
 }
 
 const makeContract = () => {
@@ -115,46 +91,97 @@ const makeContract = () => {
         deliverHTML += `<li>${inputs["deliverable5"]}</li>`;
     }
 
+    // custom HTML section for additional sections freelancers want covered in the contract
+    let customHTML = "";
+    if (inputs["customSection1"]) {
+        customHTML += `<h2>${inputs["customSection1"]}</h2>`;
+        customHTML += `<p>${inputs["customText1"]}</p>`;
+    }
+    if (inputs["customSection2"]) {
+        customHTML += `<h2>${inputs["customSection2"]}</h2>`;
+        customHTML += `<p>${inputs["customText2"]}</p>`;
+    }
+    if (inputs["customSection3"]) {
+        customHTML += `<h2>${inputs["customSection3"]}</h2>`;
+        customHTML += `<p>${inputs["customText3"]}</p>`;
+    }
+    if (inputs["customSection4"]) {
+        customHTML += `<h2>${inputs["customSection4"]}</h2>`;
+        customHTML += `<p>${inputs["customText4"]}</p>`;
+    }
+    if (inputs["customSection5"]) {
+        customHTML += `<h2>${inputs["customSection5"]}</h2>`;
+        customHTML += `<p>${inputs["customText5"]}</p>`;
+    }
+
     // building the full contract
     const contractHTML = `
-        <h1>Freelance Services Agreement</h1>
-        <p>This agreement is between ${inputs["freelancerName"]}
-        and ${inputs["clientName"]}</p>
-        <h2>Contact Information</h2>
-        <h3>Freelancer</h3>
-        <p>Name: ${inputs["freelancerName"]}</p>
-        <p>Address:</p>
-        <p>${inputs["freelancerAddress"]}</p>
-        <p>${inputs["freelancerCityStateZip"]}</p>
-        <p>Phone Number: ${inputs["freelancerPhone"]}</p>
-        <p>Email: <a href="mailto:${inputs['freelancerEmail']}">${inputs["freelancerEmail"]}</a></p>
-        <h3>Client</h3>
-        <p>Name: ${inputs["clientName"]}</p>
-        <p>Address:</p>
-        <p>${inputs["clientAddress"]}</p>
-        <p>${inputs["clientCityStateZip"]}</p>
-        <p>Phone Number: ${inputs["clientPhone"]}</p>
-        <p>Email: <a href="mailto:${inputs['clientEmail']}">${inputs["clientEmail"]}</a></p>
-        <h2>Project Information</h2>
-        <p><i>
-            ${inputs["projectDescription"}
-        </i></p>
-        <h3>Services</h3>
-        <ul>
-            ${servicesHTML}
-        </ul>
-        <h3>Pricing</h3>
-        <p>Estimated project fee: $${inputs["projectCost"}</p>
-        <p>Additional work billed at $${inputs["projectHourly"]} per hour.</p>
-        <h2>Deliverables</h2>
-        <ul>
-            ${deliverHTML}
-        </ul>
+        <div id="contractDocument">
+            <h1>Freelance Services Agreement</h1>
+            <p>This agreement is between ${inputs["freelancerName"]}
+            and ${inputs["clientName"]}</p>
+            <h2>Contact Information</h2>
+            <h3>Freelancer</h3>
+            <p>Name: ${inputs["freelancerName"]}</p>
+            <p>Address:</p>
+            <p>${inputs["freelancerAddress"]}</p>
+            <p>${inputs["freelancerCityStateZip"]}</p>
+            <p>Phone Number: ${inputs["freelancerPhone"]}</p>
+            <p>Email: <a href="mailto:${inputs['freelancerEmail']}">${inputs["freelancerEmail"]}</a></p>
+            <br>
+            <h3>Client</h3>
+            <p>Name: ${inputs["clientName"]}</p>
+            <p>Address:</p>
+            <p>${inputs["clientAddress"]}</p>
+            <p>${inputs["clientCityStateZip"]}</p>
+            <p>Phone Number: ${inputs["clientPhone"]}</p>
+            <p>Email: <a href="mailto:${inputs['clientEmail']}">${inputs["clientEmail"]}</a></p>
+            <br>
+            <h2>Project Information</h2>
+            <p><i>
+                ${inputs["projectDescription"]}
+                <br>
+            </i></p>
+            <h3>Services</h3>
+            <ul>
+                ${servicesHTML}
+            </ul>
+            <br>
+            <h3>Pricing</h3>
+            <p>Estimated project fee: $${inputs["projectCost"]}</p>
+            <p>Additional work billed at $${inputs["projectHourly"]} per hour.</p>
+            <br>
+            <h2>Deliverables</h2>
+            <ul>
+                ${deliverHTML}
+            </ul>
+            <br>
+            <h2>Project Timeline</h2>
+            <p>Project Start Date: ${inputs["projectStart"]}</p>
+            <p>Project End Date: ${inputs["projectEnd"]}</p>
+            <br>
+            ${customHTML}
+            <br><br>
+        </div>
     `;
 
     document.getElementById('contractOutput').innerHTML = contractHTML;
+
+    // hiding elements so the user only sees the contract
+    const hideAfterGenerate = [
+        "freelanceContractGenerator",
+        "contractInput",
+    ];
+
+    hideAfterGenerate.forEach(id => {
+        document.getElementById(id).style.display = "none";
+    });
+
+    // displaying the export button
+    document.getElementById("exportPDF").style.display = "block";
 }
 
 // event listeners
 
 genContract.addEventListener('click', makeContract);
+button.addEventListener("click", generatePDF);
