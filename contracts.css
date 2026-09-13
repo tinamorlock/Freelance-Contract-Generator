@@ -1,12 +1,7 @@
-:root {
-    --neon: #2272FF;
-    --dark: #1D1D1D;
-    --light: #F8F8FF;
-}
 
 body {
-    background-color: var(--light);
-    color: var(--light);
+    background-color: #f5f3f4;
+    color: #0b090a;
     font-family: 'JetBrains Mono', monospace;
 }
 
@@ -32,16 +27,16 @@ input, textarea {
     width: 60em;
     margin-bottom: 8px;
     height: 4em;
-    background-color: var(--dark);
-    color: var(--light);
-    border: 2px solid var(--neon);
+    background-color: #0b090a;
+    color: #f5f3f4;
+    border: 2px solid #ba181b;
     border-radius: 4px;
 }
 
 input::placeholder, textarea::placeholder {
     font-size: 155%;
-    background-color: var(--dark);
-    color: var(--light);
+    background-color: #0b090a;
+    color: #f5f3f4;
 }
 
 textarea {
@@ -57,7 +52,13 @@ button {
     height: 3em;
     font-size: 125%;
     color: #f5f3f4;
+    border-radius: 10px;
 }
+
+ol {
+    list-style-type: decimal;
+}
+
 
 #contractDocument {
     color: #0b090a;
@@ -80,4 +81,9 @@ button {
 
 #exportPDF {
     display: none;
+}
+
+#instructions {
+    margin-left: 25%;
+    margin-bottom: 50px;
 }

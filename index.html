@@ -15,6 +15,21 @@
         <div id="freelanceContractGenerator">
             <h1>Freelance Contract Generator</h1>
         </div>
+        <div id="instructions">
+            <h2>Instructions</h2>
+            <ol>
+                <li>Enter your contact information as the freelancer.</li>
+                <li>Enter your client's contact information.</li>
+                <li>Enter your project information.</li>
+                <li>Enter your policies.</li>
+                <li>The contract won't generate if you leave anything blank.</li>
+                <li>Exceptions: you only need to enter one service and one deliverable.</li>
+                <li>Click <b>generate my contract</b>.</li>
+                <li>Click <b>export to PDF</b> to save and print your freelance contract.</li>
+                <li>You can refresh the page if you need to start from scratch.</li>
+                <li>Any questions or issues? Email <a href="mailto:tinamorlock@gmail.com">tina morlock</a>.</li>
+            </ol>
+        </div>
         <div id="contractInput">
             <h3>Freelancer's Information</h3>
             <input type="text" id="freelancerName" placeholder="Enter the freelancer's name"><br>
@@ -35,32 +50,27 @@
             <input type="text" id="service3" placeholder="Enter a service for the project">
             <input type="text" id="service4" placeholder="Enter a service for the project">
             <input type="text" id="service5" placeholder="Enter a service for the project"><br>
-            <input type="text" id="projectCost" placeholder="Enter full project cost (if charging a flat rate)">
-            <input type="text" id="projectHourly" placeholder="Enter hourly rate if applicable"><br>
+            <input type="text" id="projectCost" placeholder="Enter full project cost">
+            <input type="text" id="projectHourly" placeholder="Enter hourly rate for work beyond the project scope"><br>
             <input type="text" id="deliverable1" placeholder="Enter a deliverable for the project">
             <input type="text" id="deliverable2" placeholder="Enter a deliverable for the project">
             <input type="text" id="deliverable3" placeholder="Enter a deliverable for the project">
             <input type="text" id="deliverable4" placeholder="Enter a deliverable for the project">
             <input type="text" id="deliverable5" placeholder="Enter a deliverable for the project"><br>
-            <input type="text" id="projectStart" placeholder="When will the project start? (Date/Condition)">
-            <input type="text" id="projectEnd" placeholder="When will the project end? (Date/Condition)">
-            <h3>Custom Sections</h3>
-            <input type="text" id="customSection1" placeholder="Enter a title for your custom section"><br>
-            <textarea id="customText1" placeholder="Enter text for custom section"></textarea><br>
-            <input type="text" id="customSection2" placeholder="Enter a title for your custom section"><br>
-            <textarea id="customText2" placeholder="Enter text for custom section"></textarea><br>
-            <input type="text" id="customSection3" placeholder="Enter a title for your custom section"><br>
-            <textarea id="customText3" placeholder="Enter text for custom section"></textarea><br>
-            <input type="text" id="customSection4" placeholder="Enter a title for your custom section"><br>
-            <textarea id="customText4" placeholder="Enter text for custom section"></textarea><br>
-            <input type="text" id="customSection5" placeholder="Enter a title for your custom section"><br>
-            <textarea id="customText5" placeholder="Enter text for custom section"></textarea><br>
+            <input type="text" id="projectStart" placeholder="When will the project start?">
+            <input type="text" id="projectEnd" placeholder="When will the project end?">
+            <h3>Policies</h3>
+            <textarea id="paymentPol" placeholder="Enter text for your payment policy"></textarea><br>
+            <textarea id="confidentialityPol" placeholder="Enter text for your confidentiality policy"></textarea><br>
+            <textarea id="revisionPol" placeholder="Enter text for your revision policy"></textarea><br>
+            <textarea id="ipPol" placeholder="Clarify when ownership of copyright transfers to your client"></textarea><br>
+            <textarea id="termPol" placeholder="Enter text for termination policy"></textarea><br>
             <button type="submit" id="generateContract">generate my contract</button>
         </div>
     <div id="contractOutput" style="color: black; background: white;">
         <!-- This is where JS will output the contract to once the end user has entered their data.-->
     </div>
-    <button id="exportPDF">Export to PDF</button>
+    <button id="exportPDF">export to PDF</button>
 
         <script src="script.js"></script>
     </body>

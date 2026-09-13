@@ -24,16 +24,11 @@ const inputArr = [
     'deliverable5',
     'projectStart',
     'projectEnd',
-    'customSection1',
-    'customText1',
-    'customSection2',
-    'customText2',
-    'customSection3',
-    'customText3',
-    'customSection4',
-    'customText4',
-    'customSection5',
-    'customText5',
+    'paymentPol',
+    'confidentialityPol',
+    'revisionPol',
+    'ipPol',
+    'termPol',
 ];
 const genContract = document.querySelector("#generateContract");
 
@@ -52,6 +47,43 @@ const makeContract = () => {
     inputArr.forEach(id => {
         inputs[id] = document.getElementById(id).value;
     });
+
+    // data validation
+
+    const requiredFields = [
+        'freelancerName',
+        'freelancerAddress',
+        'freelancerCityStateZip',
+        'freelancerEmail',
+        'freelancerPhone',
+        'clientName',
+        'clientAddress',
+        'clientCityStateZip',
+        'clientEmail',
+        'clientPhone',
+        'projectDescription',
+        'service1',
+        'projectCost',
+        'projectHourly',
+        'deliverable1',
+        'projectStart',
+        'projectEnd',
+        'paymentPol',
+        'confidentialityPol',
+        'revisionPol',
+        'ipPol',
+        'termPol',
+    ];
+
+    for (const id of requiredFields) {
+        const field = document.getElementById(id);
+
+        if (field.value.trim() === "") {
+            alert("Please complete all required fields.");
+            field.focus();
+            return;
+        }
+    }
 
     // services HTML to account for multiple services entered
     // only adds them if entered
@@ -89,29 +121,6 @@ const makeContract = () => {
     }
     if (inputs["deliverable5"]) {
         deliverHTML += `<li>${inputs["deliverable5"]}</li>`;
-    }
-
-    // custom HTML section for additional sections freelancers want covered in the contract
-    let customHTML = "";
-    if (inputs["customSection1"]) {
-        customHTML += `<h2>${inputs["customSection1"]}</h2>`;
-        customHTML += `<p>${inputs["customText1"]}</p>`;
-    }
-    if (inputs["customSection2"]) {
-        customHTML += `<h2>${inputs["customSection2"]}</h2>`;
-        customHTML += `<p>${inputs["customText2"]}</p>`;
-    }
-    if (inputs["customSection3"]) {
-        customHTML += `<h2>${inputs["customSection3"]}</h2>`;
-        customHTML += `<p>${inputs["customText3"]}</p>`;
-    }
-    if (inputs["customSection4"]) {
-        customHTML += `<h2>${inputs["customSection4"]}</h2>`;
-        customHTML += `<p>${inputs["customText4"]}</p>`;
-    }
-    if (inputs["customSection5"]) {
-        customHTML += `<h2>${inputs["customSection5"]}</h2>`;
-        customHTML += `<p>${inputs["customText5"]}</p>`;
     }
 
     // building the full contract
@@ -160,7 +169,28 @@ const makeContract = () => {
             <p>Project Start Date: ${inputs["projectStart"]}</p>
             <p>Project End Date: ${inputs["projectEnd"]}</p>
             <br>
-            ${customHTML}
+            <h2>Policies</h2>
+            <h3>Payment</h3>
+            <p><i>${inputs["paymentPol"]}</i></p>
+            <br>
+            <h3>Confidentiality</h3>
+            <p><i>${inputs["confidentialityPol"]}</i></p>
+            <br>
+            <h3>Revisions</h3>
+            <p><i>${inputs["revisionPol"]}</i></p>
+            <br>
+            <h3>Intellectual Property</h3>
+            <p><i>${inputs["ipPol"]}</i></p>
+            <br>
+            <h3>Termination</h3>
+            <p><i>${inputs["termPol"]}</i></p>
+            <br><br>
+            <h2>Signatures</h2>
+            <br>
+            <h3>Freelancer</h3>
+            <br><br><br>
+            <h3>Client</h3>
+            <br><br><br>
             <br><br>
         </div>
     `;
@@ -171,6 +201,7 @@ const makeContract = () => {
     const hideAfterGenerate = [
         "freelanceContractGenerator",
         "contractInput",
+        "instructions",
     ];
 
     hideAfterGenerate.forEach(id => {
